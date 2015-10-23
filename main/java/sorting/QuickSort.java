@@ -1,47 +1,44 @@
 package sorting;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class QuickSort {
 
-    public static int[] sort(int[] input) {
+    public static void sort(int[] input) {
 
-        return sortList(convertIntArrayToIntList(input))
-                .stream().mapToInt(i -> i).toArray();
+        if (input.length < 2) return;
+
+        sortRec(input, 0, input.length - 1);
     }
 
-    public static List<Integer> sortList(List<Integer> input) {
+    private static void sortRec(int[] input, int left, int right) {
 
-        if (input.size() < 2) return input;
+        int indx = partition(input, left, right);
 
-        Integer pivot = input.get(0);
+        if (indx > left) {
+            sortRec(input, left, indx);
+        }
+        if (indx < right) {
+            sortRec(input, indx + 1, right);
+        }
+    }
 
-        List<Integer> left = new ArrayList<>();
-        List<Integer> right = new ArrayList<>();
+    private static int partition(int[] arr, int left, int right) {
 
-        for (int i = 1; i < input.size(); i++) {
-            if (input.get(i) <= pivot) {
-                left.add(input.get(i));
-            } else {
-                right.add(input.get(i));
+        int pivot = arr[(left + right) / 2];
+
+        while (left < right) {
+            while (arr[left] < pivot) left++;
+            while (arr[right] > pivot) right--;
+            if (left < right) {
+                swap(arr, left++, right--);
             }
         }
-
-        List<Integer> result = new ArrayList<>(sortList(left));
-        result.add(pivot);
-        result.addAll(sortList(right));
-
-        return result;
+        return left;
     }
 
-    public static List<Integer> convertIntArrayToIntList(int[] input) {
 
-        List<Integer> result = new ArrayList<>();
-
-        for (int i : input) {
-            result.add(i);
-        }
-        return result;
+    public static void swap(int[] arr, int i1, int i2) {
+        int tmp = arr[i1];
+        arr[i1] = arr[i2];
+        arr[i2] = tmp;
     }
 }

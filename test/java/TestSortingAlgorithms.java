@@ -1,8 +1,6 @@
 import org.junit.Test;
 import sorting.*;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.assertArrayEquals;
 
 public class TestSortingAlgorithms {
@@ -47,6 +45,6 @@ public class TestSortingAlgorithms {
 
         int[] testArray = {5, 7, 3, 1};
 
-        assertArrayEquals(QuickSort.sort(testArray), resultArray);
+        assertArrayEquals(QuickSortImutable.sort(testArray), resultArray);
     }
 }
