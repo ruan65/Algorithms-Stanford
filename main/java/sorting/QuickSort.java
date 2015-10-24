@@ -1,5 +1,10 @@
 package sorting;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+
 public class QuickSort {
 
     public static void sort(int[] input) {
@@ -13,11 +18,12 @@ public class QuickSort {
 
         int indx = partition(input, left, right);
 
-        if (indx > left) {
-            sortRec(input, left, indx);
+        if (left < indx - 1) {
+            sortRec(input, left, indx - 1);
         }
+
         if (indx < right) {
-            sortRec(input, indx + 1, right);
+            sortRec(input, indx, right);
         }
     }
 
@@ -25,10 +31,10 @@ public class QuickSort {
 
         int pivot = arr[(left + right) / 2];
 
-        while (left < right) {
+        while (left <= right) {
             while (arr[left] < pivot) left++;
             while (arr[right] > pivot) right--;
-            if (left < right) {
+            if (left <= right) {
                 swap(arr, left++, right--);
             }
         }
@@ -41,4 +47,24 @@ public class QuickSort {
         arr[i1] = arr[i2];
         arr[i2] = tmp;
     }
+
+    public static void main(String[] args) throws IOException {
+
+        int[] intArr = Files.lines(Paths.get("10.txt")).mapToInt(Integer::parseInt).toArray();
+
+        // [3, 9, 8, 4, 6, 10, 2, 5, 7, 1]
+
+        System.out.println(Arrays.toString(intArr));
+
+        sort(intArr);
+
+        System.out.println(Arrays.toString(intArr));
+
+
+//        int ind = partition(intArr, 0, intArr.length - 1);
+//
+//        System.out.println(Arrays.toString(intArr) + " ind=" + ind);
+    }
+
+
 }
