@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Ass2_1_Comparisons {
 
@@ -36,9 +37,11 @@ public class Ass2_1_Comparisons {
 
 
 
-//        swap(arr, left, right - 1);  // task 2
+        swap(arr, left, right - 1);  // task 2
 
         int pivotIndx = defineMedianPivotIndex(arr, left, right - 1);
+
+        System.out.println(arr[pivotIndx]);
 
 //        System.out.println("before: " + Arrays.toString(Arrays.copyOfRange(arr, left, right)) + " left= " + left + " right= " + right + " pivot=" + arr[pivotIndx]);
         swap(arr, left, pivotIndx);  // task 3
@@ -88,16 +91,25 @@ public class Ass2_1_Comparisons {
 //
 //        System.out.println(Arrays.toString(arr) + " ind=" + ind);
 
-        int[] intArr = Files.lines(Paths.get("QuickSort.txt")).mapToInt(Integer::parseInt).toArray();
+//        int[] intArr = Files.lines(Paths.get("QuickSort.txt")).mapToInt(Integer::parseInt).toArray();
 
-//        int[] intArr = Files.lines(Paths.get("1000.txt")).mapToInt(Integer::parseInt).toArray();
+        int[] intArr = Files.lines(Paths.get("10.txt")).mapToInt(Integer::parseInt).toArray();
 
 
 //        System.out.println(Arrays.toString(intArr) + " counter=" + counter);
 
+//        int[] intArr = IntStream.rangeClosed(1, 1000).toArray();
+
+        System.out.println(Arrays.toString(intArr));
+
         sort(intArr);
 
-//        System.out.println(Arrays.toString(intArr));
+        System.out.println(Arrays.toString(intArr));
         System.out.println("counter=" + counter);
+
+        int x = 7;
+        int y = x;
+        x = 2;
+        System.out.println(x + ", " + y);
     }
 }
