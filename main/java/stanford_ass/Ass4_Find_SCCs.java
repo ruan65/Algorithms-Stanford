@@ -21,7 +21,6 @@ public class Ass4_Find_SCCs {
 //        Scanner sc = new Scanner(new File("scc_test1.txt"));
         Scanner sc = new Scanner(new File("SCC.txt"));
 
-
         while (sc.hasNextLine()) {
             String[] edge = sc.nextLine().split("\\s+");
 
@@ -46,8 +45,8 @@ public class Ass4_Find_SCCs {
                 reversedGraph.put(node, new Node(node));
             }
 
-            graph.get(node).addEdge(to);
-            reversedGraph.get(to).addEdge(node);
+            graph.get(node).edges.add(to);
+            reversedGraph.get(to).edges.add(node);
         }
 //        System.out.println("Graphs has been created gr: " + graph);
 //        System.out.println(reversedGraph);
@@ -135,17 +134,13 @@ public class Ass4_Find_SCCs {
                 innerLoopDfs(edge);
             }
         }
-        t++;
-        s = index;
-        orderDfs.put(s, t);
+        orderDfs.put((s = index), ++t);
 
     }
 
     static class Node {
 
         int name;
-        int fTime;
-
         boolean explored;
 
         ArrayList<Integer> edges = new ArrayList<>();
@@ -154,18 +149,9 @@ public class Ass4_Find_SCCs {
             this.name = name;
         }
 
-        public void addEdge(int name) {
-            edges.add(name);
-        }
-
         @Override
         public String toString() {
-            return "Node{" +
-                    name +
-
-                     edges +
-                    '}';
+            return "Node{" + name + edges + '}';
         }
     }
-
 }
