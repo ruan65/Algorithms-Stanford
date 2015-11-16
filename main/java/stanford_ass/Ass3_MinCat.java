@@ -87,8 +87,6 @@ public class Ass3_MinCat {
 
         System.out.println(net);
 
-
-
         int minCut = Integer.MAX_VALUE;
 
         for (int i = 0; i < 10; i++) {
@@ -103,6 +101,5 @@ public class Ass3_MinCat {
         System.out.println("min cut = " + minCut);
 
         System.out.println(net);
-
     }
 }
