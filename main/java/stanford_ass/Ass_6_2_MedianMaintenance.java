@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
-public class Ass_6_1_MedianMaintenance {
+public class Ass_6_2_MedianMaintenance {
 
     public static void main(String[] args) throws FileNotFoundException {
 
