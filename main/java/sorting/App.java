@@ -15,6 +15,15 @@ public class App {
 
     public static void main(String[] args) throws IOException {
 
+//        someWorkflow();
+        int[] intArr = {4, 5, 7, -100};
+        printArray(intArr);
+        Arr.swap(intArr, 0, 3);
+        printArray(intArr);
+
+    }
+
+    private static void someWorkflow() throws IOException {
         int[] intArr = Files.lines(Paths.get("IntegerArray.txt")).mapToInt(Integer::parseInt).toArray();
 
         Instant start = Instant.now();
@@ -25,7 +34,6 @@ public class App {
 
 
         System.out.println(intArr[0] + " " + intArr[99999]);
-
         start = Instant.now();
 
 //        InsertionSort.sort(intArr);
@@ -34,6 +42,5 @@ public class App {
         System.out.println(Duration.between(start, Instant.now()));
 
         System.out.println(intArr[0] + " " + intArr[99999]);
-
     }
 }
